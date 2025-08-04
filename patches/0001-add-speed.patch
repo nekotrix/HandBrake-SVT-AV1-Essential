@@ -1,0 +1,38 @@
+diff --git a/libhb/encsvtav1.c b/libhb/encsvtav1.c
+index 54f52a1..b73643b 100644
+--- a/libhb/encsvtav1.c
++++ b/libhb/encsvtav1.c	
+@@ -110,11 +110,30 @@ int encsvtInit(hb_work_object_t *w, hb_job_t *job)
+ 
+     if (job->encoder_preset == NULL)
+     {
+-        param->enc_mode = 5;
++        param->enc_mode = 4;
+     }
+     else
+-    {
+-        param->enc_mode = atoi(job->encoder_preset);
++    {   
++        if (!strcasecmp(job->encoder_preset, "slower"))
++        {
++            param->enc_mode = 2;
++        }
++        else if (!strcasecmp(job->encoder_preset, "slow"))
++        {
++            param->enc_mode = 4;
++        }
++        else if (!strcasecmp(job->encoder_preset, "medium"))
++        {
++            param->enc_mode = 5;
++        }
++        else if (!strcasecmp(job->encoder_preset, "fast"))
++        {
++            param->enc_mode = 6;
++        }
++        else if (!strcasecmp(job->encoder_preset, "faster"))
++        {
++            param->enc_mode = 8;
++        }
+     }
+ 
+     if (job->vquality <= HB_INVALID_VIDEO_QUALITY)
