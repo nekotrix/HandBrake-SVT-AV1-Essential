@@ -1,15 +1,18 @@
 name: Windows Build
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
   schedule:
     - cron: '30 7 * * 1,5'
   workflow_dispatch:
 
 env:
-  TOOLCHAIN_VERSION: "20250417"
-  TOOLCHAIN_SHA: "a93eb5db7d87985ddf812623b4403953a85be0ef"
-  TOOLCHAIN_FILE: "llvm-mingw-20250417-msvcrt-ubuntu-22.04-x86_64.tar.xz"
+  TOOLCHAIN_VERSION: "20250709"
+  TOOLCHAIN_SHA: "422f13915a41acd8b93566e590531f55d3de6e531575197d51756ff8e8d16525"
+  TOOLCHAIN_FILE: "llvm-mingw-20250709-msvcrt-ubuntu-22.04-x86_64.tar.xz"
 
 jobs:
   build_mingw_arm:
@@ -26,7 +29,7 @@ jobs:
     - name: Setup Toolchain
       run: |
         wget https://github.com/mstorsjo/llvm-mingw/releases/download/${{ env.TOOLCHAIN_VERSION }}/${{ env.TOOLCHAIN_FILE }}
-        SHA=$(sha1sum ${{ env.TOOLCHAIN_FILE }})
+        SHA=$(sha256sum ${{ env.TOOLCHAIN_FILE }})
         EXPECTED="${{ env.TOOLCHAIN_SHA }}  ${{ env.TOOLCHAIN_FILE }}"
         echo "Calculated SHA: $SHA"
         echo "Expected SHA:  $EXPECTED"
@@ -161,7 +164,7 @@ jobs:
     - name: Setup Toolchain
       run: |
         wget https://github.com/mstorsjo/llvm-mingw/releases/download/${{ env.TOOLCHAIN_VERSION }}/${{ env.TOOLCHAIN_FILE }}
-        SHA=$(sha1sum ${{ env.TOOLCHAIN_FILE }})
+        SHA=$(sha256sum ${{ env.TOOLCHAIN_FILE }})
         EXPECTED="${{ env.TOOLCHAIN_SHA }}  ${{ env.TOOLCHAIN_FILE }}"
         echo "Calculated SHA: $SHA"
         echo "Expected SHA:  $EXPECTED"
@@ -278,6 +281,7 @@ jobs:
     name: Deploy Nightly Build
     runs-on: ubuntu-latest
     needs: [build_gui_x64, build_gui_arm64]
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
        
