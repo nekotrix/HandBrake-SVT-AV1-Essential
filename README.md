@@ -18,7 +18,7 @@ In addition, using GitHub Actions, nightly build of patched executables will be 
 ### Testing
 Help for testing on all platforms would be helpful.
 ### Contributing
-I'm looking for people more acquainted than I am with Handbrake's code to implement some -Essential features to the GUI like support for the `--quality` and `--speed` presets
+I'm looking for people more acquainted than I am with Handbrake's code to implement some -Essential features to the GUI like support for the `--quality` presets
 ### Special thanks
 A special thanks to [vincejv (Docker container for HandBrake)](https://github.com/vincejv/docker-handbrake) from which I took inspiration for some patches.
 
