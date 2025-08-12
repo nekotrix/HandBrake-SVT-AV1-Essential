@@ -1,0 +1,356 @@
+diff --git a/libhb/handbrake/preset_builtin.h b/libhb/handbrake/preset_builtin.h
+index 83ae566..1a421d7 100644
+--- a/libhb/handbrake/preset_builtin.h
++++ b/libhb/handbrake/preset_builtin.h
+@@ -891,37 +891,41 @@ const char hb_builtin_presets_json[] =
+ "                    \"AlignAVStart\": true,\n"
+ "                    \"AudioAutomaticNamingBehavior\": \"unnamed\",\n"
+ "                    \"AudioCopyMask\": [\n"
+-"                        \"copy:aac\"\n"
++"                        \"copy:aac\",\n"
++"                        \"copy:opus\"\n"
++"                    ],\n"
++"                    \"AudioEncoderFallback\": \"opus\",\n"
++"                    \"AudioLanguageList\": [\n"
++"                        \"any\",\n"
++"                        \"und\"\n"
+ "                    ],\n"
+-"                    \"AudioEncoderFallback\": \"aac\",\n"
+-"                    \"AudioLanguageList\": [],\n"
+ "                    \"AudioList\": [\n"
+ "                        {\n"
+ "                            \"AudioBitrate\": 160,\n"
+-"                            \"AudioCompressionLevel\": -1.0,\n"
+-"                            \"AudioDitherMethod\": \"auto\",\n"
+-"                            \"AudioEncoder\": \"aac\",\n"
++"                            \"AudioCompressionLevel\": 0,\n"
++"                            \"AudioEncoder\": \"copy:opus\",\n"
+ "                            \"AudioMixdown\": \"stereo\",\n"
+ "                            \"AudioNormalizeMixLevel\": false,\n"
+ "                            \"AudioSamplerate\": \"auto\",\n"
+-"                            \"AudioTrackDRCSlider\": 0.0,\n"
+-"                            \"AudioTrackGainSlider\": 0.0,\n"
+-"                            \"AudioTrackQuality\": -1.0,\n"
++"                            \"AudioTrackDRCSlider\": 0,\n"
++"                            \"AudioTrackGainSlider\": 0,\n"
++"                            \"AudioTrackQuality\": 0,\n"
+ "                            \"AudioTrackQualityEnable\": false\n"
+ "                        }\n"
+ "                    ],\n"
+-"                    \"AudioSecondaryEncoderMode\": true,\n"
++"                    \"AudioSecondaryEncoderMode\": false,\n"
+ "                    \"AudioTrackNamePassthru\": true,\n"
+-"                    \"AudioTrackSelectionBehavior\": \"first\",\n"
+-"                    \"ChapterMarkers\": true,\n"
++"                    \"AudioTrackSelectionBehavior\": \"all\",\n"
++"                    \"ChapterMarkers\": false,\n"
+ "                    \"ChildrenArray\": [],\n"
+ "                    \"Default\": true,\n"
+-"                    \"FileFormat\": \"mp4\",\n"
++"                    \"FileFormat\": \"av_mp4\",\n"
+ "                    \"Folder\": false,\n"
+ "                    \"FolderOpen\": false,\n"
+-"                    \"InlineParameterSets\": false,\n"
++"                    \"MetadataPassthru\": true,\n"
+ "                    \"Mp4iPodCompatible\": false,\n"
+-"                    \"Optimize\": false,\n"
++"                    \"Optimize\": true,\n"
++"                    \"PictureAllowUpscaling\": false,\n"
+ "                    \"PictureBottomCrop\": 0,\n"
+ "                    \"PictureChromaSmoothCustom\": \"\",\n"
+ "                    \"PictureChromaSmoothPreset\": \"off\",\n"
+@@ -929,19 +933,15 @@ const char hb_builtin_presets_json[] =
+ "                    \"PictureColorspaceCustom\": \"\",\n"
+ "                    \"PictureColorspacePreset\": \"off\",\n"
+ "                    \"PictureCombDetectCustom\": \"\",\n"
+-"                    \"PictureCombDetectPreset\": \"default\",\n"
+-"                    \"PictureCropMode\": 0,\n"
++"                    \"PictureCombDetectPreset\": \"off\",\n"
++"                    \"PictureCropMode\": 1,\n"
+ "                    \"PictureDARWidth\": 0,\n"
+ "                    \"PictureDeblockCustom\": \"strength=strong:thresh=20:blocksize=8\",\n"
+ "                    \"PictureDeblockPreset\": \"off\",\n"
+ "                    \"PictureDeblockTune\": \"medium\",\n"
+-"                    \"PictureDeinterlaceCustom\": \"\",\n"
+-"                    \"PictureDeinterlaceFilter\": \"decomb\",\n"
+-"                    \"PictureDeinterlacePreset\": \"default\",\n"
++"                    \"PictureDeinterlaceFilter\": \"off\",\n"
+ "                    \"PictureDenoiseCustom\": \"\",\n"
+ "                    \"PictureDenoiseFilter\": \"off\",\n"
+-"                    \"PictureDenoisePreset\": \"light\",\n"
+-"                    \"PictureDenoiseTune\": \"none\",\n"
+ "                    \"PictureDetelecine\": \"off\",\n"
+ "                    \"PictureDetelecineCustom\": \"\",\n"
+ "                    \"PictureForceHeight\": 0,\n"
+@@ -950,51 +950,55 @@ const char hb_builtin_presets_json[] =
+ "                    \"PictureItuPAR\": false,\n"
+ "                    \"PictureKeepRatio\": true,\n"
+ "                    \"PictureLeftCrop\": 0,\n"
+-"                    \"PictureModulus\": 2,\n"
+-"                    \"PicturePAR\": \"auto\",\n"
+-"                    \"PicturePARHeight\": 720,\n"
+-"                    \"PicturePARWidth\": 853,\n"
++"                    \"PicturePAR\": \"none\",\n"
++"                    \"PicturePARHeight\": 1,\n"
++"                    \"PicturePARWidth\": 1,\n"
++"                    \"PicturePadBottom\": 0,\n"
++"                    \"PicturePadColor\": \"black\",\n"
++"                    \"PicturePadLeft\": 0,\n"
++"                    \"PicturePadMode\": \"none\",\n"
++"                    \"PicturePadRight\": 0,\n"
++"                    \"PicturePadTop\": 0,\n"
+ "                    \"PictureRightCrop\": 0,\n"
+-"                    \"PictureRotate\": \"angle=0:hflip=0\",\n"
+ "                    \"PictureSharpenCustom\": \"\",\n"
+ "                    \"PictureSharpenFilter\": \"off\",\n"
+ "                    \"PictureSharpenPreset\": \"medium\",\n"
+ "                    \"PictureSharpenTune\": \"none\",\n"
+ "                    \"PictureTopCrop\": 0,\n"
++"                    \"PictureUseMaximumSize\": true,\n"
+ "                    \"PictureWidth\": 1920,\n"
+-"                    \"PresetDescription\": \"H.264 video (up to 1080p30) and AAC stereo audio, in an MP4 container.\",\n"
++"                    \"PresetDescription\": \"AV1 video (up to 1080p) and OPUS stereo audio, in an MP4 container.\",\n"
+ "                    \"PresetName\": \"Fast 1080p30\",\n"
+-"                    \"SubtitleAddCC\": false,\n"
+-"                    \"SubtitleAddForeignAudioSearch\": true,\n"
++"                    \"SubtitleAddCC\": true,\n"
++"                    \"SubtitleAddForeignAudioSearch\": false,\n"
+ "                    \"SubtitleAddForeignAudioSubtitle\": false,\n"
+-"                    \"SubtitleBurnBDSub\": true,\n"
+-"                    \"SubtitleBurnBehavior\": \"foreign\",\n"
+-"                    \"SubtitleBurnDVDSub\": true,\n"
+-"                    \"SubtitleLanguageList\": [],\n"
++"                    \"SubtitleBurnBDSub\": false,\n"
++"                    \"SubtitleBurnBehavior\": \"none\",\n"
++"                    \"SubtitleBurnDVDSub\": false,\n"
++"                    \"SubtitleLanguageList\": [\n"
++"                        \"any\",\n"
++"                        \"und\"\n"
++"                    ],\n"
+ "                    \"SubtitleTrackNamePassthru\": true,\n"
+-"                    \"SubtitleTrackSelectionBehavior\": \"none\",\n"
++"                    \"SubtitleTrackSelectionBehavior\": \"all\",\n"
+ "                    \"Type\": 0,\n"
+-"                    \"UsesPictureFilters\": true,\n"
+-"                    \"UsesPictureSettings\": 1,\n"
+-"                    \"VideoAvgBitrate\": 6000,\n"
+-"                    \"VideoColorMatrixCodeOverride\": 0,\n"
++"                    \"VideoAvgBitrate\": 0,\n"
++"                    \"VideoColorMatrixCode\": 0,\n"
+ "                    \"VideoColorRange\": \"limited\",\n"
+-"                    \"VideoEncoder\": \"x264\",\n"
+-"                    \"VideoFramerate\": \"30\",\n"
+-"                    \"VideoFramerateMode\": \"pfr\",\n"
++"                    \"VideoEncoder\": \"svt_av1_10bit\",\n"
++"                    \"VideoFramerateMode\": \"cfr\",\n"
+ "                    \"VideoGrayScale\": false,\n"
+-"                    \"VideoLevel\": \"4.0\",\n"
++"                    \"VideoLevel\": \"auto\",\n"
+ "                    \"VideoMultiPass\": true,\n"
+ "                    \"VideoOptionExtra\": \"\",\n"
+ "                    \"VideoPasshtruHDRDynamicMetadata\": \"all\",\n"
+ "                    \"VideoPreset\": \"fast\",\n"
+-"                    \"VideoProfile\": \"main\",\n"
+-"                    \"VideoQualitySlider\": 22.0,\n"
++"                    \"VideoProfile\": \"auto\",\n"
++"                    \"VideoQualitySlider\": 30,\n"
+ "                    \"VideoQualityType\": 2,\n"
+ "                    \"VideoScaler\": \"swscale\",\n"
+-"                    \"VideoTune\": \"\",\n"
+-"                    \"VideoTurboMultiPass\": true,\n"
+-"                    \"x264Option\": \"\",\n"
++"                    \"VideoTune\": \"ssim\",\n"
++"                    \"VideoTurboMultiPass\": false,\n"
+ "                    \"x264UseAdvancedOptions\": false\n"
+ "                },\n"
+ "                {\n"
+diff --git a/preset/preset_builtin.json b/preset/preset_builtin.json
+index 9bbec0f..2d55c7d 100644
+--- a/preset/preset_builtin.json
++++ b/preset/preset_builtin.json
+@@ -913,113 +913,114 @@
+                     "AlignAVStart": true,
+                     "AudioAutomaticNamingBehavior": "unnamed",
+                     "AudioCopyMask": [
+-                        "copy:aac"
++                        "copy:aac",
++                        "copy:opus"
+                     ],
+-                    "AudioEncoderFallback": "aac",
++                    "AudioEncoderFallback": "opus",
+                     "AudioLanguageList": [
++                        "any",
++                        "und"
+                     ],
+                     "AudioList": [
+                         {
+                             "AudioBitrate": 160,
+-                            "AudioCompressionLevel": -1.0,
+-                            "AudioDitherMethod": "auto",
+-                            "AudioEncoder": "aac",
++                            "AudioCompressionLevel": 0,
++                            "AudioEncoder": "copy:opus",
+                             "AudioMixdown": "stereo",
+                             "AudioNormalizeMixLevel": false,
+                             "AudioSamplerate": "auto",
+-                            "AudioTrackQualityEnable": false,
+-                            "AudioTrackQuality": -1.0,
+-                            "AudioTrackGainSlider": 0.0,
+-                            "AudioTrackDRCSlider": 0.0
++                            "AudioTrackDRCSlider": 0,
++                            "AudioTrackGainSlider": 0,
++                            "AudioTrackQuality": 0,
++                            "AudioTrackQualityEnable": false
+                         }
+                     ],
+-                    "AudioSecondaryEncoderMode": true,
++                    "AudioSecondaryEncoderMode": false,
+                     "AudioTrackNamePassthru": true,
+-                    "AudioTrackSelectionBehavior": "first",
+-                    "ChapterMarkers": true,
+-                    "ChildrenArray": [
+-                    ],
++                    "AudioTrackSelectionBehavior": "all",
++                    "ChapterMarkers": false,
++                    "ChildrenArray": [],
+                     "Default": true,
+-                    "FileFormat": "mp4",
++                    "FileFormat": "av_mp4",
+                     "Folder": false,
+                     "FolderOpen": false,
+-                    "InlineParameterSets": false,
+-                    "Optimize": false,
++                    "MetadataPassthru": true,
+                     "Mp4iPodCompatible": false,
+-                    "PictureCropMode": 0,
++                    "Optimize": true,
++                    "PictureAllowUpscaling": false,
+                     "PictureBottomCrop": 0,
+-                    "PictureLeftCrop": 0,
+-                    "PictureRightCrop": 0,
+-                    "PictureTopCrop": 0,
+-                    "PictureDARWidth": 0,
+-                    "PictureDeblockPreset": "off",
+-                    "PictureDeblockTune": "medium",
+-                    "PictureDeblockCustom": "strength=strong:thresh=20:blocksize=8",
+-                    "PictureCombDetectCustom": "",
+-                    "PictureCombDetectPreset": "default",
+-                    "PictureDeinterlaceCustom": "",
+-                    "PictureDeinterlaceFilter": "decomb",
+-                    "PictureDeinterlacePreset": "default",
+-                    "PictureDenoiseCustom": "",
+-                    "PictureDenoiseFilter": "off",
+-                    "PictureDenoisePreset": "light",
+-                    "PictureDenoiseTune": "none",
+                     "PictureChromaSmoothCustom": "",
+                     "PictureChromaSmoothPreset": "off",
+                     "PictureChromaSmoothTune": "none",
+                     "PictureColorspaceCustom": "",
+                     "PictureColorspacePreset": "off",
++                    "PictureCombDetectCustom": "",
++                    "PictureCombDetectPreset": "off",
++                    "PictureCropMode": 1,
++                    "PictureDARWidth": 0,
++                    "PictureDeblockCustom": "strength=strong:thresh=20:blocksize=8",
++                    "PictureDeblockPreset": "off",
++                    "PictureDeblockTune": "medium",
++                    "PictureDeinterlaceFilter": "off",
++                    "PictureDenoiseCustom": "",
++                    "PictureDenoiseFilter": "off",
++                    "PictureDetelecine": "off",
++                    "PictureDetelecineCustom": "",
++                    "PictureForceHeight": 0,
++                    "PictureForceWidth": 0,
++                    "PictureHeight": 1080,
++                    "PictureItuPAR": false,
++                    "PictureKeepRatio": true,
++                    "PictureLeftCrop": 0,
++                    "PicturePadBottom": 0,
++                    "PicturePadColor": "black",
++                    "PicturePadLeft": 0,
++                    "PicturePadMode": "none",
++                    "PicturePadRight": 0,
++                    "PicturePadTop": 0,
++                    "PicturePAR": "none",
++                    "PicturePARHeight": 1,
++                    "PicturePARWidth": 1,
++                    "PictureRightCrop": 0,
+                     "PictureSharpenCustom": "",
+                     "PictureSharpenFilter": "off",
+                     "PictureSharpenPreset": "medium",
+                     "PictureSharpenTune": "none",
+-                    "PictureDetelecine": "off",
+-                    "PictureDetelecineCustom": "",
+-                    "PictureItuPAR": false,
+-                    "PictureKeepRatio": true,
+-                    "PictureModulus": 2,
+-                    "PicturePAR": "auto",
+-                    "PicturePARWidth": 853,
+-                    "PicturePARHeight": 720,
+-                    "PictureRotate": "angle=0:hflip=0",
++                    "PictureTopCrop": 0,
++                    "PictureUseMaximumSize": true,
+                     "PictureWidth": 1920,
+-                    "PictureHeight": 1080,
+-                    "PictureForceHeight": 0,
+-                    "PictureForceWidth": 0,
+-                    "PresetDescription": "H.264 video (up to 1080p30) and AAC stereo audio, in an MP4 container.",
++                    "PresetDescription": "AV1 video (up to 1080p) and OPUS stereo audio, in an MP4 container.",
+                     "PresetName": "Fast 1080p30",
+-                    "Type": 0,
+-                    "UsesPictureFilters": true,
+-                    "UsesPictureSettings": 1,
+-                    "SubtitleAddCC": false,
+-                    "SubtitleAddForeignAudioSearch": true,
++                    "SubtitleAddCC": true,
++                    "SubtitleAddForeignAudioSearch": false,
+                     "SubtitleAddForeignAudioSubtitle": false,
+-                    "SubtitleBurnBehavior": "foreign",
+-                    "SubtitleBurnBDSub": true,
+-                    "SubtitleBurnDVDSub": true,
++                    "SubtitleBurnBDSub": false,
++                    "SubtitleBurnBehavior": "none",
++                    "SubtitleBurnDVDSub": false,
+                     "SubtitleLanguageList": [
++                        "any",
++                        "und"
+                     ],
+-                    "SubtitleTrackSelectionBehavior": "none",
+                     "SubtitleTrackNamePassthru": true,
+-                    "VideoAvgBitrate": 6000,
+-                    "VideoColorMatrixCodeOverride": 0,
++                    "SubtitleTrackSelectionBehavior": "all",
++                    "Type": 0,
++                    "VideoAvgBitrate": 0,
++                    "VideoColorMatrixCode": 0,
+                     "VideoColorRange": "limited",
+-                    "VideoEncoder": "x264",
+-                    "VideoFramerate": "30",
+-                    "VideoFramerateMode": "pfr",
++                    "VideoEncoder": "svt_av1_10bit",
++                    "VideoFramerateMode": "cfr",
+                     "VideoGrayScale": false,
+-                    "VideoScaler": "swscale",
+-                    "VideoPreset": "fast",
+-                    "VideoTune": "",
+-                    "VideoProfile": "main",
+-                    "VideoLevel": "4.0",
+-                    "VideoOptionExtra": "",
+-                    "VideoQualityType": 2,
+-                    "VideoQualitySlider": 22.0,
++                    "VideoLevel": "auto",
+                     "VideoMultiPass": true,
+-                    "VideoTurboMultiPass": true,
++                    "VideoOptionExtra": "",
+                     "VideoPasshtruHDRDynamicMetadata": "all",
+-                    "x264Option": "",
++                    "VideoPreset": "fast",
++                    "VideoProfile": "auto",
++                    "VideoQualitySlider": 30,
++                    "VideoQualityType": 2,
++                    "VideoScaler": "swscale",
++                    "VideoTune": "ssim",
++                    "VideoTurboMultiPass": false,
+                     "x264UseAdvancedOptions": false
+                 },
+                 {
