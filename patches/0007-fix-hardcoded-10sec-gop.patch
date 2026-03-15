@@ -7,7 +7,7 @@ index 54f52a117..4e83bf751 100644
      }
  
 -    param->intra_period_length = ((double)job->orig_vrate.num / job->orig_vrate.den + 0.5) * 10;
-+    param->intra_period_length = -1;
++    param->intra_period_length = -2;
      // VFR isn't supported, the rate control will ignore
      // the frames timestamps and use the values below
      param->frame_rate_numerator = job->orig_vrate.num;
