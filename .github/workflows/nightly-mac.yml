@@ -36,7 +36,7 @@ jobs:
       uses: actions/cache@v5
       with:
         path: ~/mac-toolchain
-        key: ${{ runner.os }}-${{ runner.arch }}-toolchain
+        key: ${{ runner.os }}-${{ runner.arch }}-toolchain-v2
 
     - name: Get latest cargo-c version
       id: cargoc_version
@@ -64,7 +64,7 @@ jobs:
         echo ~/mac-toolchain/bin >> $GITHUB_PATH
         rustup target add x86_64-apple-darwin
         xcodebuild -downloadComponent MetalToolchain
-        brew install ccache autoconf automake libtool meson
+        brew install ccache
         export PATH=$(brew --prefix ccache)/libexec:$PATH
         echo "PATH=$(brew --prefix ccache)/libexec:$PATH" >> $GITHUB_ENV
 
