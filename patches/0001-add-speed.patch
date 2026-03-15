@@ -1,7 +1,7 @@
-diff --git a/encsvtav1.c b/encsvtav1_new.c
+diff --git a/libhb/encsvtav1.c b/libhb/encsvtav1.c
 index 217dc0d..575c87b 100644
---- a/encsvtav1.c
-+++ b/encsvtav1_new.c
+--- a/libhb/encsvtav1.c
++++ b/libhb/encsvtav1.c	
 @@ -112,11 +112,30 @@ int encsvtInit(hb_work_object_t *w, hb_job_t *job)
  
      if (job->encoder_preset == NULL)
