@@ -1,10 +1,10 @@
 diff --git a/libhb/common.c b/libhb/common.c
-index 1c43c7a7f..9f2957d21 100644
+index c660344..3f64951 100644
 --- a/libhb/common.c
 +++ b/libhb/common.c
-@@ -285,8 +285,8 @@ hb_encoder_internal_t hb_video_encoders[]  =
-     { { "MPEG-2 (FFmpeg)",             "ffmpeg2",          NULL,                             HB_VCODEC_FFMPEG_MPEG2,      HB_MUX_MASK_MP4|HB_MUX_MASK_MKV, }, NULL, 1, 0, HB_GID_VCODEC_MPEG2,  },
-     { { "VP3 (Theora)",                "libtheora",        NULL,                             HB_VCODEC_THEORA,                            HB_MUX_MASK_MKV, }, NULL, 1, 0, HB_GID_VCODEC_THEORA, },
+@@ -291,8 +291,7 @@ hb_encoder_internal_t hb_video_encoders[]  =
+     // generic names
+     { { "ProRes",                      "prores",           NULL,                             0,                           HB_MUX_MASK_MOV|HB_MUX_MASK_MKV, }, NULL, 0, 0, HB_GID_VCODEC_PRORES, },
      // actual encoders
 -    { { "AV1 (SVT)",                   "svt_av1",          "AV1 (SVT)",                      HB_VCODEC_SVT_AV1,           HB_MUX_MASK_MP4|HB_MUX_MASK_WEBM|HB_MUX_MASK_MKV, }, NULL, 0, 1, HB_GID_VCODEC_AV1_SVT,    },
 -    { { "AV1 10-bit (SVT)",            "svt_av1_10bit",    "AV1 10-bit (SVT)",               HB_VCODEC_SVT_AV1_10BIT,     HB_MUX_MASK_MP4|HB_MUX_MASK_WEBM|HB_MUX_MASK_MKV, }, NULL, 0, 1, HB_GID_VCODEC_AV1_SVT,    },
