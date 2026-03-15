@@ -64,7 +64,7 @@ jobs:
         echo ~/mac-toolchain/bin >> $GITHUB_PATH
         rustup target add x86_64-apple-darwin
         xcodebuild -downloadComponent MetalToolchain
-        brew install ccache autoconf automake libtool
+        brew install ccache autoconf automake libtool meson
         export PATH=$(brew --prefix ccache)/libexec:$PATH
         echo "PATH=$(brew --prefix ccache)/libexec:$PATH" >> $GITHUB_ENV
 
