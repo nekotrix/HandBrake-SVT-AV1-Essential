@@ -56,32 +56,32 @@ jobs:
 
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
-        sudo ./llvm.sh 21 all
+        sudo ./llvm.sh 22 all
         
         mkdir -p $HOME/llvm-overrides
         
-        ln -sf $(which llvm-ar-21) $HOME/llvm-overrides/ar
-        ln -sf $(which llvm-nm-21) $HOME/llvm-overrides/nm
-        ln -sf $(which llvm-ranlib-21) $HOME/llvm-overrides/ranlib
+        ln -sf $(which llvm-ar-22) $HOME/llvm-overrides/ar
+        ln -sf $(which llvm-nm-22) $HOME/llvm-overrides/nm
+        ln -sf $(which llvm-ranlib-22) $HOME/llvm-overrides/ranlib
         
-        ln -sf $(which lld-21) $HOME/llvm-overrides/ld
+        ln -sf $(which lld-22) $HOME/llvm-overrides/ld
 
         echo "PATH=$HOME/llvm-overrides:$PATH" >> $GITHUB_ENV
 
         mkdir -p $HOME/ccache_bin
-        ln -s $(which ccache) $HOME/ccache_bin/clang-21
-        ln -s $(which ccache) $HOME/ccache_bin/clang++-21
+        ln -s $(which ccache) $HOME/ccache_bin/clang-22
+        ln -s $(which ccache) $HOME/ccache_bin/clang++-22
         
         echo "PATH=$HOME/ccache_bin:$HOME/llvm-overrides:$PATH" >> $GITHUB_ENV
         
         echo "CCACHE_DIR=$HOME/.ccache" >> $GITHUB_ENV
-        echo "CC=clang-21" >> $GITHUB_ENV
-        echo "CXX=clang++-21" >> $GITHUB_ENV
+        echo "CC=clang-22" >> $GITHUB_ENV
+        echo "CXX=clang++-22" >> $GITHUB_ENV
         
-        echo "AR=llvm-ar-21" >> $GITHUB_ENV
-        echo "NM=llvm-nm-21" >> $GITHUB_ENV
-        echo "RANLIB=llvm-ranlib-21" >> $GITHUB_ENV
-        echo "LDFLAGS=-fuse-ld=lld-21" >> $GITHUB_ENV
+        echo "AR=llvm-ar-22" >> $GITHUB_ENV
+        echo "NM=llvm-nm-22" >> $GITHUB_ENV
+        echo "RANLIB=llvm-ranlib-22" >> $GITHUB_ENV
+        echo "LDFLAGS=-fuse-ld=lld-22" >> $GITHUB_ENV
 
     - name: Compiler Cache
       uses: actions/cache@v5
@@ -133,6 +133,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.event_name != 'pull_request'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v6
        
