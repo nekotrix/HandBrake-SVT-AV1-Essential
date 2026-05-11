@@ -2,7 +2,7 @@ diff --git a/libhb/common.c b/libhb/common.c
 index ef4f29bf9..6a77bb281 100644
 --- a/libhb/common.c
 +++ b/libhb/common.c
-@@ -293,8 +293,8 @@ hb_encoder_internal_t hb_video_encoders[]  =
+@@ -293,8 +293,7 @@ hb_encoder_internal_t hb_video_encoders[]  =
      // generic names
      { { "ProRes",                      "prores",           NULL,                             0,                           HB_MUX_MASK_MOV|HB_MUX_MASK_MKV, }, NULL, 0, 0, HB_GID_VCODEC_PRORES, },
      // actual encoders
