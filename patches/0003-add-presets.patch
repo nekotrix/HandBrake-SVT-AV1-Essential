@@ -7,7 +7,7 @@ index c95f090ca..9e30fcb3f 100644
  static const char * const hb_av1_svt_preset_names[] =
  {
 -    "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "-1", NULL
-+    "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "-1", "-2", "-3", NULL
++    "faster", "fast", "medium", "slow", "slower", NULL
  };
  
  static const char * const hb_av1_svt_tune_names[] =
